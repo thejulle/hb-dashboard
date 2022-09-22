@@ -1,0 +1,75 @@
+// TO-DO: Platform-fontti, lokaalit fonttifilet
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+@font-face {
+  font-family: 'Platform Web';
+  src:  url('/fonts/Platform-Medium-Web.woff2') format('woff2'),
+        url('/fonts/Platform-Medium-Web.woff') format('woff');
+  font-weight:  500;
+  font-style:   normal;
+  font-stretch: normal;
+}
+
+// Variables
+:root {
+  --container-width: 1080px;
+  --sidebar-width: 270px;
+  
+  --white: #fff;
+  --blue: #0064FF;
+  --blue-tint: #E9F1FD;
+  --blue-tint-dark: #CCE0FF;
+  --gray: #D9D9D9;
+  --black: #000;
+  
+  --font-body: 'Inter', sans-serif;
+  --font-heading: 'Platform Web';
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+  font-size: 100%;
+  line-height: 1.5;
+  font-family: var(--font-body);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  margin: 0 0 16px;
+  line-height: 1.1;
+  letter-spacing: -0.014em;
+  font-weight: 500;
+  font-family: var(--font-heading);
+}
+
+h1, h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+button {
+  letter-spacing: -0.0011em;
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+input {
+  font-family: var(--font-body);
+}
+
+img {
+  max-width: 100%;
+}
