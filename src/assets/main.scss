@@ -155,11 +155,36 @@ aside {
         align-items: center;
         gap: 18px;
 
-        .icon {
+        .tir-graph {
           width: 46px;
           height: 46px;
-          border: 2px solid var(--blue);
-          border-radius: 100%;
+          background:
+            radial-gradient(
+              circle closest-side,
+              white 0,
+              white 85%,
+              transparent 85%,
+              transparent 100%,
+              white 0
+            ),
+            conic-gradient(
+              from 180deg,
+              #a04cbe 0,
+              #a04cbe 1%,
+              #710f95 0,
+              #710f95 3%,
+              #cce0ff 0,
+              #cce0ff 91%,
+              #c79a00 0,
+              #c79a00 95%,
+              #ffca28 0,
+              #ffca28 100%
+          );
+        }
+
+        img {
+          width: 46px;
+          height: 46px;
         }
 
         p {
@@ -182,7 +207,7 @@ aside {
       display: inline-block;
       margin-bottom: 14px;
       padding: 5px 10px;
-      font-size: 9px;
+      font-size: 10px;
       font-weight: 400;
       font-family: var(--font-body);
       background:#F2F2F2;

@@ -13,23 +13,24 @@ export default {
           name: 'Tobias Gerhardsson',
           gender: 'Male',
           age: '7',
+          status: 'Good',
           image: '/Profile.png',
           latestGlucoseValue: '48 seconds ago',
           latestInsulinDose: '3 weeks ago',
           timeInRange: {
-            last24Hours: '92%',
-            week: '88%',
-            month: '75%'
+            last24Hours: '67',
+            week: '72',
+            month: '70'
           },
           steps: {
-            last24Hours: '4,400',
-            week: '36,250',
-            month: '85,400'
+            last24Hours: '4,480',
+            week: '7,389',
+            month: '8,711'
           },
           mood: {
-            last24Hours: '92%',
-            week: '88%',
-            month: '75%'
+            last24Hours: '66',
+            week: '82',
+            month: '80'
           }
         },
         {
@@ -37,23 +38,24 @@ export default {
           name: 'Erica Svejderud',
           gender: 'Female',
           age: '10',
+          status: 'Needs to be contacted',
           image: '/Profile-1.png',
           latestGlucoseValue: '31 minutes ago',
           latestInsulinDose: '2 weeks ago',
           timeInRange: {
-            last24Hours: '81%',
-            week: '76%',
-            month: '55%'
+            last24Hours: '30',
+            week: '40',
+            month: '45'
           },
           steps: {
-            last24Hours: '2,400',
-            week: '11,250',
-            month: '43,400'
+            last24Hours: '2,215',
+            week: '4,322',
+            month: '2,956'
           },
           mood: {
-            last24Hours: '62%',
-            week: '65%',
-            month: '70%'
+            last24Hours: '55',
+            week: '52',
+            month: '59'
           }
         },
         {
@@ -61,23 +63,24 @@ export default {
           name: 'Aarti Shinde',
           gender: 'Female',
           age: '8',
+          status: 'Contacted',
           image: '/Profile-2.png',
           latestGlucoseValue: '1 hour ago',
           latestInsulinDose: '1 week ago',
           timeInRange: {
-            last24Hours: '92%',
-            week: '88%',
-            month: '75%'
+            last24Hours: '68',
+            week: '42',
+            month: '38'
           },
           steps: {
-            last24Hours: '5,900',
-            week: '12,750',
-            month: '39,400'
+            last24Hours: '5,320',
+            week: '2,745',
+            month: '3,179'
           },
           mood: {
-            last24Hours: '99%',
-            week: '91%',
-            month: '88%'
+            last24Hours: '55',
+            week: '68',
+            month: '75'
           }
         }
       ]
@@ -125,7 +128,7 @@ export default {
           </div>
         </div>
         <div class="patient__top__buttons">
-          <button class="btn btn--outline">{Status}</button>
+          <button class="btn btn--outline">{{ activePatient.status }}</button>
           <button class="btn">Contact patient</button>
         </div>
       </div>
@@ -135,10 +138,10 @@ export default {
           <h3>Time in range (TIR)</h3>
           <hr>
           <div>
-            <div class="icon"></div>
+            <div class="tir-graph"></div>
             <div class="value">
               <p>
-                <span>{{ activePatient.timeInRange.last24Hours }}</span>
+                <span>{{ activePatient.timeInRange.last24Hours }}%</span>
                 Target range: <b>4.0–10.0 mmol/L</b>
               </p>
             </div>
@@ -146,7 +149,7 @@ export default {
           <h3>Steps</h3>
           <hr>
           <div>
-            <div class="icon"></div>
+            <img src="/steps.svg" alt="Steps icon">
             <div class="value">
               <p>
                 <span>{{ activePatient.steps.last24Hours }}</span>
@@ -157,10 +160,10 @@ export default {
           <h3>Mood</h3>
           <hr>
           <div>
-            <div class="icon"></div>
+            <img src="/mood-all-good.svg" alt="Mood: All good">
             <div class="value">
               <p>
-                <span>{{ activePatient.mood.last24Hours }}</span>
+                <span>{{ activePatient.mood.last24Hours }}%</span>
                 Positive on average
               </p>
             </div>
@@ -171,10 +174,10 @@ export default {
           <h3>Time in range (TIR)</h3>
           <hr>
           <div>
-            <div class="icon"></div>
+            <div class="tir-graph"></div>
             <div class="value">
               <p>
-                <span>{{ activePatient.timeInRange.week }}</span>
+                <span>{{ activePatient.timeInRange.week }}%</span>
                 Target range: <b>4.0–10.0 mmol/L</b>
               </p>
             </div>
@@ -182,7 +185,7 @@ export default {
           <h3>Steps</h3>
           <hr>
           <div>
-            <div class="icon"></div>
+            <img src="/steps.svg" alt="Steps icon">
             <div class="value">
               <p>
                 <span>{{ activePatient.steps.week }}</span>
@@ -193,10 +196,10 @@ export default {
           <h3>Mood</h3>
           <hr>
           <div>
-            <div class="icon"></div>
+            <img src="/mood-contacted.svg" alt="Mood: Contactedd">
             <div class="value">
               <p>
-                <span>{{ activePatient.mood.week }}</span>
+                <span>{{ activePatient.mood.week }}%</span>
                 Negative on average
               </p>
             </div>
@@ -207,10 +210,10 @@ export default {
           <h3>Time in range (TIR)</h3>
           <hr>
           <div>
-            <div class="icon"></div>
+            <div class="tir-graph"></div>
             <div class="value">
               <p>
-                <span>{{ activePatient.timeInRange.month }}</span>
+                <span>{{ activePatient.timeInRange.month }}%</span>
                 Target range: <b>4.0–10.0 mmol/L</b>
               </p>
             </div>
@@ -218,7 +221,7 @@ export default {
           <h3>Steps</h3>
           <hr>
           <div>
-            <div class="icon"></div>
+            <img src="/steps.svg" alt="Steps icon">
             <div class="value">
               <p>
                 <span>{{ activePatient.steps.month }}</span>
@@ -229,10 +232,10 @@ export default {
           <h3>Mood</h3>
           <hr>
           <div>
-            <div class="icon"></div>
+            <img src="/mood-needs-to-be-contacted.svg" alt="Mood: Needs to be contacted">
             <div class="value">
               <p>
-                <span>{{ activePatient.mood.month }}</span>
+                <span>{{ activePatient.mood.month }}%</span>
                 Negative on average
               </p>
             </div>
