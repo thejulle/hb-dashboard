@@ -31,6 +31,11 @@ export default {
             last24Hours: '66',
             week: '82',
             month: '80'
+          },
+          moodAverage: {
+            last24Hours: 'Positive',
+            week: 'Positive',
+            month: 'Positive'
           }
         },
         {
@@ -55,8 +60,13 @@ export default {
           mood: {
             last24Hours: '55',
             week: '52',
-            month: '59'
-          }
+            month: '59',
+          },
+          moodAverage: {
+            last24Hours: 'Negative',
+            week: 'Positive',
+            month: 'Negative'
+          },
         },
         {
           id: 3,
@@ -81,7 +91,12 @@ export default {
             last24Hours: '55',
             week: '68',
             month: '75'
-          }
+          },
+          moodAverage: {
+            last24Hours: 'Positive',
+            week: 'Negative',
+            month: 'Negative',
+          },
         }
       ]
     }
@@ -104,7 +119,7 @@ export default {
         </nav> -->
         <ul>
           <li v-for="patient in patients">
-            <button @click="activePatient = patient" :class="{ active: activePatient === patient }">
+            <button @click="activePatient = patient" :class="[{ active: activePatient === patient }, {good: patient.status == 'Good'}, {'needs-to-be-contacted': patient.status == 'Needs to be contacted'}, {contacted: patient.status == 'Contacted'}]">
               <img :src="patient.image" :alt="patient.name">
               <div>
                 <h3>{{ patient.name }}</h3>
@@ -128,7 +143,7 @@ export default {
           </div>
         </div>
         <div class="patient__top__buttons">
-          <button class="btn btn--outline">{{ activePatient.status }}</button>
+          <button class="btn btn--outline" :class="[{good: activePatient.status == 'Good'}, {'needs-to-be-contacted': activePatient.status == 'Needs to be contacted'}, {contacted: activePatient.status == 'Contacted'}]">{{ activePatient.status }}</button>
           <button class="btn">Contact patient</button>
         </div>
       </div>
@@ -138,7 +153,10 @@ export default {
           <h3>Time in range (TIR)</h3>
           <hr>
           <div>
-            <div class="tir-graph"></div>
+            <div
+              class="tir-graph"
+              :style="{background: 'radial-gradient( circle closest-side, #fff 0, #fff 85%, transparent 85%, transparent 100%, #fff 0), conic-gradient( from 180deg, #a04cbe 0, #a04cbe ' + ((100 - activePatient.timeInRange.last24Hours) * .25) + '%, #710f95 0, #710f95 ' + ((100 - activePatient.timeInRange.last24Hours) * .5) + '%, #cce0ff 0, #cce0ff ' + ((100 - activePatient.timeInRange.last24Hours) * .5 + +activePatient.timeInRange.last24Hours) + '%, #c79a00 0, #c79a00 ' + ((100 - activePatient.timeInRange.last24Hours) * .75 + +activePatient.timeInRange.last24Hours) + '%, #ffca28 0, #ffca28 100%)'}"
+            ></div>
             <div class="value">
               <p>
                 <span>{{ activePatient.timeInRange.last24Hours }}%</span>
@@ -164,7 +182,7 @@ export default {
             <div class="value">
               <p>
                 <span>{{ activePatient.mood.last24Hours }}%</span>
-                Positive on average
+                {{ activePatient.moodAverage.last24Hours }} on average
               </p>
             </div>
           </div>
@@ -174,7 +192,10 @@ export default {
           <h3>Time in range (TIR)</h3>
           <hr>
           <div>
-            <div class="tir-graph"></div>
+            <div
+              class="tir-graph"
+              :style="{background: 'radial-gradient( circle closest-side, #fff 0, #fff 85%, transparent 85%, transparent 100%, #fff 0), conic-gradient( from 180deg, #a04cbe 0, #a04cbe ' + ((100 - activePatient.timeInRange.week) * .25) + '%, #710f95 0, #710f95 ' + ((100 - activePatient.timeInRange.week) * .5) + '%, #cce0ff 0, #cce0ff ' + ((100 - activePatient.timeInRange.week) * .5 + +activePatient.timeInRange.week) + '%, #c79a00 0, #c79a00 ' + ((100 - activePatient.timeInRange.week) * .75 + +activePatient.timeInRange.week) + '%, #ffca28 0, #ffca28 100%)'}"
+            ></div>
             <div class="value">
               <p>
                 <span>{{ activePatient.timeInRange.week }}%</span>
@@ -200,7 +221,7 @@ export default {
             <div class="value">
               <p>
                 <span>{{ activePatient.mood.week }}%</span>
-                Negative on average
+                {{ activePatient.moodAverage.week }} on average
               </p>
             </div>
           </div>
@@ -210,7 +231,10 @@ export default {
           <h3>Time in range (TIR)</h3>
           <hr>
           <div>
-            <div class="tir-graph"></div>
+            <div
+              class="tir-graph"
+              :style="{background: 'radial-gradient( circle closest-side, #fff 0, #fff 85%, transparent 85%, transparent 100%, #fff 0), conic-gradient( from 180deg, #a04cbe 0, #a04cbe ' + ((100 - activePatient.timeInRange.month) * .25) + '%, #710f95 0, #710f95 ' + ((100 - activePatient.timeInRange.month) * .5) + '%, #cce0ff 0, #cce0ff ' + ((100 - activePatient.timeInRange.month) * .5 + +activePatient.timeInRange.month) + '%, #c79a00 0, #c79a00 ' + ((100 - activePatient.timeInRange.month) * .75 + +activePatient.timeInRange.month) + '%, #ffca28 0, #ffca28 100%)'}"
+            ></div>
             <div class="value">
               <p>
                 <span>{{ activePatient.timeInRange.month }}%</span>
@@ -236,7 +260,7 @@ export default {
             <div class="value">
               <p>
                 <span>{{ activePatient.mood.month }}%</span>
-                Negative on average
+                {{ activePatient.moodAverage.month }} on average
               </p>
             </div>
           </div>

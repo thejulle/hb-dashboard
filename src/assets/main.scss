@@ -76,10 +76,33 @@ aside {
           letter-spacing: -0.0014em;
           font-weight: 700;
           font-family: var(--font-body);
+
+          &::before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            margin-right: 6px;
+            background: var(--green);
+            border-radius: 100%;
+            transform: translateY(-1px);
+          }
         }
         
         p {
           margin: 0;
+        }
+
+        &.needs-to-be-contacted {
+          h3::before {
+            background: var(--yellow);
+          }
+        }
+
+        &.contacted {
+          h3::before {
+            background: var(--purple);
+          }
         }
       }
     }
@@ -131,8 +154,16 @@ aside {
           display: inline-block;
           width: 24px;
           height: 24px;
-          background: var(--blue);
+          // background: var(--blue);
+          background: var(--green);
           border-radius: 100%;
+        }
+        &.needs-to-be-contacted::before {
+          background: var(--yellow);
+        }
+
+        &.contacted::before {
+          background: var(--purple);
         }
       }
     }
@@ -158,6 +189,7 @@ aside {
         .tir-graph {
           width: 46px;
           height: 46px;
+          /*
           background:
             radial-gradient(
               circle closest-side,
@@ -180,6 +212,7 @@ aside {
               #ffca28 0,
               #ffca28 100%
           );
+          */
         }
 
         img {
