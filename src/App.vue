@@ -493,13 +493,13 @@ export default {
               <div>
                 <p>Daily</p>
                 <div>
-                  <p><span>7.8</span><br>mg/dL</p>
+                  <p><span>188</span><br>mg/dL</p>
                 </div>
               </div>
               <div>
                 <p>Weekly</p>
                 <div>
-                  <p><span>7.8</span><br>mg/dL</p>
+                  <p><span>179</span><br>mg/dL</p>
                 </div>
               </div>
             </div>
