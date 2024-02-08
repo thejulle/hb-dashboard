@@ -12,8 +12,8 @@
 
 // Variables
 :root {
-  --container-width: 1080px;
-  --sidebar-width: 270px;
+  --container-width: 1360px;
+  --sidebar-width: 304px;
   
   --white: #fff;
   --yellow: #FFCA28;
@@ -43,6 +43,7 @@ html, body {
   font-family: var(--font-body);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  background: var(--blue-tint);
 }
 
 h1, h2, h3, h4 {
@@ -65,6 +66,11 @@ p {
   margin: 0 0 1rem;
 }
 
+a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
 button {
   letter-spacing: -0.0011em;
   font-family: var(--font-body);
@@ -82,10 +88,32 @@ button {
   border-radius: 120px;
 
   &--outline {
-    padding: 19px 27px;
+    padding: 20px 28px;
+    line-height: 1;
+    color: var(--blue);
+    background: transparent;
+    border: 1px solid var(--blue);
+  }
+
+  &--settings {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 12px;
+    font-size: .875rem;
+    line-height: 1;
     color: var(--black);
     background: transparent;
-    border: 1px solid var(--gray);
+    border: 1px solid #BFBFBF;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      background: url(/icon-btn-settings.svg) 50% 50% no-repeat;
+    }
   }
 }
 
@@ -95,4 +123,10 @@ input {
 
 img {
   max-width: 100%;
+}
+
+hr {
+  margin: 32px 0;
+  border: 0;
+  border-top: 1px solid #D9D9D9;
 }
