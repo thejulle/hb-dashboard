@@ -1,4 +1,6 @@
 <script setup>
+import { RouterLink } from "vue-router";
+
 import SidebarLinkList from "../components/SidebarLinkList.vue";
 
 defineProps({
@@ -35,7 +37,7 @@ defineProps({
         :patients="patients"
       />
     </div>
-    <button class="btn btn--settings">Settings</button>
+    <RouterLink to="/doctors-settings" class="btn btn--settings">Settings</RouterLink>
   </div>
 </template>
 

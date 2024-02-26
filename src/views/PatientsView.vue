@@ -6,6 +6,7 @@ import PatientDetails from "../components/PatientDetails.vue";
 export default {
   data() {
     return {
+      activeModal: null,
       activePatient: {
         id: 2,
         name: "Erica Svejderud",

@@ -14,10 +14,10 @@
         </div>
         <input type="submit" class="btn" value="Log In">
       </form>
-      <a href="#" class="btn">Create Account</a>
+      <a href="javascript:void(0);" class="btn">Create Account</a>
       <div class="login__bottom">
-        <a href="#">Forgot Password?</a>
-        <a href="#">Create Doctor's Account</a>
+        <a href="javascript:void(0);">Forgot Password?</a>
+        <a href="javascript:void(0);">Create Doctor's Account</a>
       </div>
     </div>
   </div>

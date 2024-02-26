@@ -1,14 +1,12 @@
 <script setup>
 import TopSection from "../components/TopSection.vue";
 import Sidebar from "../components/Sidebar.vue";
-import PatientDetails from "../components/PatientDetails.vue";
+// import PatientDetails from "../components/PatientDetails.vue";
 </script>
 <script>
 export default {
   data() {
     return {
-      activeModal: null,
-      activePatient: null,
       patients: [
         {
           id: 1,
@@ -237,28 +235,6 @@ export default {
       ],
     };
   },
-  mounted() {
-    if (this.$route.params.activePatientId) {
-      this.patients.find((patient) => {
-        if (patient.id == this.$route.params.activePatientId) {
-          this.activePatient = patient;
-        }
-      });
-    // } else {
-    //   this.activePatient = this.patients[0];
-    }
-  },
-  watch: {
-    $route() {
-      if (this.$route.params.activePatientId) {
-        this.patients.find((patient) => {
-          if (patient.id == this.$route.params.activePatientId) {
-            this.activePatient = patient;
-          }
-        });
-      }
-    },
-  },
 };
 </script>
 
@@ -269,6 +245,7 @@ export default {
   </aside>
   <main>
     <TopSection />
-    <PatientDetails :activePatient="activePatient" />
+    <h2>Settings will be added here...</h2>
+    <!-- <PatientDetails :activePatient="activePatient" /> -->
   </main>
 </template>
