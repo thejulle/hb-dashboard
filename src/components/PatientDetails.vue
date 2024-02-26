@@ -1,4 +1,6 @@
 <script setup>
+import PatientHeader from "./PatientHeader.vue";
+
 defineProps({
   activePatient: {
     // type: Object,
@@ -10,6 +12,11 @@ defineProps({
 import Plotly from 'plotly.js-dist-min';
 
 export default {
+  mounted () {
+    if (this.$refs.plot) {
+      this.createPlot();
+    }
+  },
   updated() {
     if (this.$refs.plot) {
       this.createPlot();
@@ -744,28 +751,10 @@ export default {
 
 <template>
   <div v-if="activePatient" class="patient">
-    <div class="patient__header">
-      <div class="patient__header__patient-meta">
-        <img :src="activePatient.image" :alt="activePatient.name">
-        <div>
-          <h1>{{ activePatient.name }}</h1>
-          <p>{{ activePatient.gender }}, {{ activePatient.age }} years old</p>
-        </div>
-      </div>
-      <div class="patient__header__buttons">
-        <button class="btn btn--outline btn--status" :class="[{good: activePatient.status == 'Good'}, {'needs-to-be-contacted': activePatient.status == 'Needs to be contacted'}, {contacted: activePatient.status == 'Contacted'}]">{{ activePatient.status }}</button>
-        <button class="btn btn--outline">CSV Reports</button>
-      </div>
-    </div>
+    <PatientHeader :activePatient="activePatient" />
     <div class="patient__top-cards">
       <div class="card patient__top-cards__latest-glucose">
         <h2>Latest glucose value</h2>
-        <!-- <p>
-          <span :class="activePatient.latestGlucoseTrend">{{ activePatient.latestGlucoseValue }}</span><br>
-          mg/dL<br>
-          {{ activePatient.latestGlucoseTime }}
-        </p> -->
-        <!-- <img src="/latest-glucose.svg" alt="Latest glucose value"> -->
         <div :class="activePatient.latestGlucoseTrend">
           <p>
             <span>{{ activePatient.latestGlucoseValue }}</span><br>mg/dL
@@ -1114,11 +1103,11 @@ export default {
           </div>
           <div>
             <ul>
-              <li>Glucose reading</li>
-              <li>Fast-acting insulin</li>
-              <li>Long-acting insulin</li>
-              <li>Notifications</li>
-              <li>Calories burned</li>
+              <li class="glucose-reading">Glucose reading</li>
+              <li class="fast-acting-insulin">Fast-acting insulin</li>
+              <li class="long-acting-insulin">Long-acting insulin</li>
+              <li class="notifications">Notifications</li>
+              <li class="calories-burned">Calories burned</li>
             </ul>
           </div>
         </div>
@@ -1151,41 +1140,6 @@ export default {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     gap: 8px;
-
-    /*
-    &__latest-glucose {
-      p {
-        margin: 0;
-      }
-
-      span {
-        display: inline-flex;
-        align-items: center;
-        font-size: 32px;
-        line-height: 1.1;
-        font-weight: 500;
-        font-family: var(--font-heading);
-
-        &::after {
-          content: "";
-          display: inline-block;
-          width: 16px;
-          height: 16px;
-          margin-left: 6px;
-          background: url(/icon-arrow.svg) 50% 50% no-repeat;
-          transform: rotate(45deg);
-        }
-
-        &.up::after {
-          transform: rotate(0);
-        }
-
-        &.down::after {
-          transform: rotate(90deg);
-        }
-      }
-    }
-    */
 
     &__latest-glucose {
       display: flex;
@@ -1275,67 +1229,6 @@ export default {
             font-family: var(--font-heading);
             color: var(--black);
           }
-        }
-      }
-    }
-  }
-
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    &__patient-meta {
-      display: flex;
-      gap: 24px;
-      align-items: center;
-
-      img {
-        width: 90px;
-        height: 90px;
-        border-radius: 100%;
-      }
-
-      h1 {
-        margin: 0;
-        font-size: 32px;
-        line-height: 1.1;
-        letter-spacing: 0;
-      }
-
-      p {
-        margin: 0;
-      }
-    }
-
-    &__buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-left: auto;
-
-      .btn--status {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        color: var(--black);
-        border: 1px solid var(--gray);
-
-        &::before {
-          content: "";
-          display: inline-block;
-          width: 24px;
-          height: 24px;
-          // background: var(--blue);
-          background: var(--green);
-          border-radius: 100%;
-        }
-        &.needs-to-be-contacted::before {
-          background: var(--yellow);
-        }
-
-        &.contacted::before {
-          background: var(--purple);
         }
       }
     }
@@ -1561,12 +1454,47 @@ export default {
       }
 
       ul {
+        list-style: none;
         display: flex;
         flex-direction: column;
         gap: 4px;
         margin: 0;
-        padding: 0 0 0 16px;
+        padding: 0;
         font-size: 14px;
+
+        li {
+          display: flex;
+          align-items: center;
+          gap: 4px 12px;
+
+          &::before {
+            content: "";
+            display: block;
+            width: 10px;
+            height: 10px;
+            border-radius: 100%;
+            background-color: currentColor;
+            border: 2px solid currentColor;
+          }
+
+          &.glucose-reading::before {
+            color: var(--blue);
+          }
+          &.fast-acting-insulin::before {
+            color: var(--green);
+          }
+          &.long-acting-insulin::before {
+            color: var(--red);
+          }
+          &.notifications::before {
+            color: var(--black);
+            background-color: transparent;
+          }
+          &.calories-burned::before {
+            color: #CDE0FD;
+            border-radius: 0;
+          }
+        }
       }
     }
   }

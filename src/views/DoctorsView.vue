@@ -1,5 +1,6 @@
 <script setup>
-import PatientSidebar from "../components/PatientSidebar.vue";
+import TopSection from "../components/TopSection.vue";
+import Sidebar from "../components/Sidebar.vue";
 import PatientDetails from "../components/PatientDetails.vue";
 </script>
 <script>
@@ -263,17 +264,10 @@ export default {
 
 <template>
   <aside>
-    <PatientSidebar :patients="patients" />
+    <Sidebar :patients="patients" />
   </aside>
   <main>
-    <div class="top-section">
-      <div>
-        <p>Tuesday, 30 Jan 2023</p>
-      </div>
-      <div>
-        <a href="#">Log out</a>
-      </div>
-    </div>
+    <TopSection />
     <PatientDetails :activePatient="activePatient" />
   </main>
 </template>

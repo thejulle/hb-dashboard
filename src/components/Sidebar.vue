@@ -1,5 +1,5 @@
 <script setup>
-import PatientLinkList from "../components/PatientLinkList.vue";
+import SidebarLinkList from "../components/SidebarLinkList.vue";
 
 defineProps({
   patients: {
@@ -17,19 +17,19 @@ defineProps({
     <div v-if="patients" class="sidebar__patients">
       <h2>Patients</h2>
       <input type="text" placeholder="Search">
-      <PatientLinkList
+      <SidebarLinkList
         status="Needs to be contacted"
         heading="Needs to be contacted"
         :patients="patients"
       />
       <hr />
-      <PatientLinkList
+      <SidebarLinkList
         status="Contacted"
         heading="Contacted"
         :patients="patients"
       />
       <hr />
-      <PatientLinkList
+      <SidebarLinkList
         status="Good"
         heading="Doing good"
         :patients="patients"
@@ -70,6 +70,10 @@ defineProps({
     font-size: 14px;
     border: 1px solid #A6A6A6;
     border-radius: 100px;
+  }
+
+  .btn--settings {
+    padding: 12px;
   }
 }
 </style>

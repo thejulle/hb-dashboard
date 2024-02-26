@@ -1,4 +1,5 @@
 <script setup>
+import TopSection from "../components/TopSection.vue";
 import PatientDetails from "../components/PatientDetails.vue";
 </script>
 <script>
@@ -44,14 +45,7 @@ export default {
 
 <template>
   <main>
-    <div class="top-section">
-      <div>
-        <p>Tuesday, 30 Jan 2023</p>
-      </div>
-      <div>
-        <a href="#">Log out</a>
-      </div>
-    </div>
+    <TopSection />
     <PatientDetails :activePatient="activePatient" />
   </main>
 </template>

@@ -69,6 +69,7 @@ ul {
 
     &:hover,
     &:focus {
+      text-decoration: none;
       background: #dbebfe;
     }
 
