@@ -1,44 +1,46 @@
 <script setup>
 import TopSection from "../components/TopSection.vue";
 import PatientDetails from "../components/PatientDetails.vue";
+import Modal from "../components/Modal.vue";
 </script>
 <script>
 export default {
   data() {
     return {
-      activeModal: null,
       activePatient: {
-        id: 2,
-        name: "Erica Svejderud",
-        gender: "Female",
-        age: "10",
-        status: "Needs to be contacted",
-        image: "/Profile-1.png",
-        latestGlucoseValue: "278",
-        latestGlucoseTime: "5 min ago",
-        latestGlucoseTrend: "up",
-        latestInsulinDose: "2 weeks ago",
-        timeInRange: {
-          last24Hours: "30",
-          week: "40",
-          month: "45",
+          id: 3,
+          name: "Tobias Gerhardsson",
+          gender: "Male",
+          age: "7",
+          status: "Good",
+          image: "/Profile.png",
+          latestGlucoseValue: "123",
+          latestGlucoseTime: "3 min ago",
+          latestGlucoseTrend: "same",
+          latestInsulinDose: "3 weeks ago",
+          timeInRange: {
+            last24Hours: "67",
+            week: "72",
+            month: "70",
+          },
+          steps: {
+            last24Hours: "4,480",
+            week: "7,389",
+            month: "8,711",
+          },
+          mood: {
+            last24Hours: "66",
+            week: "82",
+            month: "80",
+          },
+          moodAverage: {
+            last24Hours: "Positive",
+            week: "Positive",
+            month: "Positive",
+          },
+          daysWithGcmData: '84%',
+          avgCalibrationsPerDay: 3.70,
         },
-        steps: {
-          last24Hours: "2,215",
-          week: "4,322",
-          month: "2,956",
-        },
-        mood: {
-          last24Hours: "55",
-          week: "52",
-          month: "59",
-        },
-        moodAverage: {
-          last24Hours: "Negative",
-          week: "Positive",
-          month: "Negative",
-        },
-      },
     };
   },
 };
@@ -48,6 +50,7 @@ export default {
   <main>
     <TopSection />
     <PatientDetails :activePatient="activePatient" />
+    <Modal />
   </main>
 </template>
 

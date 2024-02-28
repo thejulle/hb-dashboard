@@ -1,11 +1,13 @@
 <script setup>
 import { useRoute } from 'vue-router';
+import { useModalStore } from '@/stores/modal';
 
 const route = useRoute();
+const modalStore = useModalStore()
 
 defineProps({
   activePatient: {
-    // type: Object,
+    type: Object,
     required: true,
   },
 });
@@ -21,11 +23,34 @@ defineProps({
       </div>
     </div>
     <div class="patient__header__buttons">
-      <button class="btn btn--outline btn--status" :class="[{good: activePatient.status == 'Good'}, {'needs-to-be-contacted': activePatient.status == 'Needs to be contacted'}, {contacted: activePatient.status == 'Contacted'}]">{{ activePatient.status }}</button>
-      <button v-if="route.name === 'patients-view'" class="btn btn--outline">Share with doctor</button>
-      <button class="btn btn--outline">CSV Reports</button>
-      <button v-if="route.name === 'patients-view'" class="btn">Contact doctor</button>
-      <button v-if="route.name === 'patients-view'" class="btn btn--settings">Settings</button>
+      <div class="btn btn--outline btn--status" :class="[{good: activePatient.status == 'Good'}, {'needs-to-be-contacted': activePatient.status == 'Needs to be contacted'}, {contacted: activePatient.status == 'Contacted'}]">{{ activePatient.status }}</div>
+      <button
+        v-if="route.name === 'patients-view'"
+        @click="modalStore.changeModal('shareWithDoctor')"
+        class="btn btn--outline"
+      >
+        Share with doctor
+      </button>
+      <button
+        @click="modalStore.changeModal('csvReports')"
+        class="btn btn--outline"
+      >
+        CSV Reports
+      </button>
+      <button
+        v-if="route.name === 'patients-view'"
+        @click="modalStore.changeModal('contactDoctor')"
+        class="btn"
+      >
+        Contact doctor
+      </button>
+      <button
+        v-if="route.name === 'patients-view'"
+        @click="modalStore.changeModal('settings')"
+        class="btn btn--settings"
+      >
+        Settings
+      </button>
     </div>
   </div>
 </template>

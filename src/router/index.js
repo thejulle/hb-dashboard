@@ -11,13 +11,17 @@ const router = createRouter({
   routes: [
     {
       path: "/",
-      component: DoctorsView,
-      name: 'doctors-view',
-    },
-    {
-      path: "/patient/:activePatientId",
-      component: DoctorsView,
-      name: 'doctors-view',
+      children: [
+        {
+          path: '',
+          component: DoctorsView,
+        },
+        {
+          path: '/patient/:activePatientId',
+          component: DoctorsView,
+          name: 'doctors-view',
+        },
+      ]
     },
     {
       path: "/doctors-settings",

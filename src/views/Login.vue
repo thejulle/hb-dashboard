@@ -1,5 +1,3 @@
-<script setup>
-</script>
 
 <template>
   <div class="login">
@@ -12,7 +10,8 @@
           <input type="checkbox" id="remember-me" name="drone" value="remember-me">
           <label for="remember-me">Remember me</label>
         </div>
-        <input type="submit" class="btn" value="Log In">
+        <!-- <input type="submit" class="btn" value="Log In"> -->
+        <input @click="this.$router.push('/') " type="submit" class="btn" value="Log In">
       </form>
       <a href="javascript:void(0);" class="btn">Create Account</a>
       <div class="login__bottom">

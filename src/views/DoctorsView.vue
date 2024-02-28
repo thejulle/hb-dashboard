@@ -2,12 +2,12 @@
 import TopSection from "../components/TopSection.vue";
 import Sidebar from "../components/Sidebar.vue";
 import PatientDetails from "../components/PatientDetails.vue";
+import Modal from "../components/Modal.vue";
 </script>
 <script>
 export default {
   data() {
     return {
-      activeModal: null,
       activePatient: null,
       patients: [
         {
@@ -41,6 +41,8 @@ export default {
             week: "Positive",
             month: "Negative",
           },
+          daysWithGcmData: '64%',
+          avgCalibrationsPerDay: 1.20,
         },
         {
           id: 2,
@@ -49,30 +51,32 @@ export default {
           age: "12",
           status: "Needs to be contacted",
           image: "/Profile.png",
-          latestGlucoseValue: "278",
-          latestGlucoseTime: "5 min ago",
+          latestGlucoseValue: "258",
+          latestGlucoseTime: "20 min ago",
           latestGlucoseTrend: "up",
-          latestInsulinDose: "2 weeks ago",
+          latestInsulinDose: "1 week ago",
           timeInRange: {
-            last24Hours: "30",
-            week: "40",
-            month: "45",
+            last24Hours: "50",
+            week: "30",
+            month: "35",
           },
           steps: {
-            last24Hours: "2,215",
-            week: "4,322",
-            month: "2,956",
+            last24Hours: "3,215",
+            week: "9,322",
+            month: "22,956",
           },
           mood: {
-            last24Hours: "55",
-            week: "52",
-            month: "59",
+            last24Hours: "65",
+            week: "72",
+            month: "69",
           },
           moodAverage: {
             last24Hours: "Negative",
             week: "Positive",
             month: "Negative",
           },
+          daysWithGcmData: '32%',
+          avgCalibrationsPerDay: 2.10,
         },
         {
           id: 3,
@@ -105,6 +109,8 @@ export default {
             week: "Positive",
             month: "Positive",
           },
+          daysWithGcmData: '84%',
+          avgCalibrationsPerDay: 3.70,
         },
         {
           id: 4,
@@ -137,6 +143,8 @@ export default {
             week: "Positive",
             month: "Positive",
           },
+          daysWithGcmData: '22%',
+          avgCalibrationsPerDay: 0.95,
         },
         {
           id: 5,
@@ -168,7 +176,9 @@ export default {
             last24Hours: "Positive",
             week: "Positive",
             month: "Positive",
-          }
+          },
+          daysWithGcmData: '50%',
+          avgCalibrationsPerDay: 2.00,
         },
         {
           id: 6,
@@ -201,6 +211,8 @@ export default {
             week: "Positive",
             month: "Positive",
           },
+          daysWithGcmData: '64%',
+          avgCalibrationsPerDay: 1.20,
         },
         {
           id: 7,
@@ -233,6 +245,8 @@ export default {
             week: "Negative",
             month: "Negative",
           },
+          daysWithGcmData: '64%',
+          avgCalibrationsPerDay: 1.20,
         },
       ],
     };
@@ -269,6 +283,8 @@ export default {
   </aside>
   <main>
     <TopSection />
-    <PatientDetails :activePatient="activePatient" />
+    <PatientDetails v-if="activePatient" :activePatient="activePatient" />
+    <h2 v-else>Select patient from the sidebar menu.</h2>
+    <Modal />
   </main>
 </template>

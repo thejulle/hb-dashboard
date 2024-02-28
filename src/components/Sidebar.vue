@@ -18,7 +18,7 @@ defineProps({
     </div>
     <div v-if="patients" class="sidebar__patients">
       <h2>Patients</h2>
-      <input type="text" placeholder="Search">
+      <input type="text" placeholder="Search" disabled>
       <SidebarLinkList
         status="Needs to be contacted"
         heading="Needs to be contacted"

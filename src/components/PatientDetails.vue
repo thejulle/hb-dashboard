@@ -3,7 +3,7 @@ import PatientHeader from "./PatientHeader.vue";
 
 defineProps({
   activePatient: {
-    // type: Object,
+    type: Object,
     required: true,
   },
 });
@@ -768,14 +768,14 @@ export default {
           <div>
             <p>Days with GCM data</p>
             <p>
-              <span>64%</span><br>
+              <span>{{ activePatient.daysWithGcmData }}</span><br>
               9/14
             </p>
           </div>
           <div>
             <p>Avg.calibrations per day</p>
             <p>
-              <span>1.20</span>
+              <span>{{ activePatient.avgCalibrationsPerDay }}</span>
             </p>
           </div>
         </div>
