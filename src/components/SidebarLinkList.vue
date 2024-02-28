@@ -20,7 +20,7 @@ defineProps({
 <template>
   <h3 v-html="heading"></h3>
   <ul>
-    <li v-for="patient in patients.filter(i => i.status === this.status)" :key="patient.id">
+    <li v-for="patient in patients.filter(i => i.status === status)" :key="patient.id">
       <RouterLink
         :to="'/patient/' + patient.id"
         :class="[

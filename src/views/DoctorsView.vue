@@ -276,7 +276,6 @@ export default {
 };
 </script>
 
-
 <template>
   <aside>
     <Sidebar :patients="patients" />

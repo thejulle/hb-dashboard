@@ -16,7 +16,7 @@ const headings = {
     <div class="modal">
       <div class="modal__top">
         <h2 v-html="headings[modalStore.activeModal]"></h2>
-        <button @click="modalStore.changeModal(null)">&times;</button>
+        <button @click="modalStore.changeModal(null)" aria-label="Close modal"></button>
       </div>
       <template v-if="modalStore.activeModal === 'shareWithDoctor'">
         <img src="/modal-share-with-doctor.png" :alt="headings[modalStore.activeModal]">
